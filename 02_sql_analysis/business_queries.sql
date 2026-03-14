@@ -1,13 +1,13 @@
 
 
--- Q1. Male vs Female customers ka total revenue
+--  Male vs Female customers ka total revenue
 SELECT 
     gender,
     SUM([purchase_amount_(usd)]) AS total_revenue
 FROM customer
 GROUP BY gender;
 
--- Q2. Customer Discount use kiya aur average se zyada spend kiya
+--  Customer Discount use kiya aur average se zyada spend kiya
 SELECT 
     customer_id,
     [purchase_amount_(usd)]
@@ -17,7 +17,7 @@ AND [purchase_amount_(usd)] > (
     SELECT AVG([purchase_amount_(usd)]) FROM customer
 );
 
--- Q3. Top 5 products with highest average review rating
+--  Top 5 products with highest average review rating
 SELECT TOP 5
     item_purchased, 
     AVG(review_rating) AS average_product_rating
@@ -25,7 +25,7 @@ FROM customer
 GROUP BY item_purchased
 ORDER BY AVG(review_rating) DESC;
 
--- Q4. Standard vs Express Shipping – Average Purchase Comparison
+-- Standard vs Express Shipping â€“ Average Purchase Comparison
 SELECT 
     shipping_type,
     ROUND(AVG([purchase_amount_(usd)]), 2) AS average_purchase
@@ -33,7 +33,7 @@ FROM customer
 WHERE shipping_type IN ('Express', 'Standard')
 GROUP BY shipping_type;
 
--- Q5. Subscribers vs Non-Subscribers – Spend Comparison
+--  Subscribers vs Non-Subscribers â€“ Spend Comparison
 SELECT 
     subscription_status,
     COUNT(customer_id) AS total_customer,
@@ -43,7 +43,7 @@ FROM customer
 GROUP BY subscription_status
 ORDER BY total_revenue DESC, avg_spend DESC;
 
--- Q6. Top 5 products with highest % of discounted purchases
+--  Top 5 products with highest % of discounted purchases
 SELECT TOP 5
     item_purchased,
     ROUND(
@@ -55,7 +55,7 @@ FROM customer
 GROUP BY item_purchased
 ORDER BY discount_rate DESC;
 
--- Q7. Customer Segmentation (New / Returning / Loyal)
+--  Customer Segmentation (New / Returning / Loyal)
 WITH customer_type AS (
     SELECT
         customer_id,
@@ -73,7 +73,7 @@ SELECT
 FROM customer_type
 GROUP BY customer_segment;
 
--- Q8. Each category ke Top 3 most purchased products
+--  Each category ke Top 3 most purchased products
 WITH item_counts AS (
     SELECT
         category,
@@ -94,7 +94,7 @@ FROM item_counts
 WHERE item_rank <= 3
 ORDER BY category, total_orders DESC;
 
--- Q9. Repeat buyers (>5 purchases) subscribe karte hain?
+--  Repeat buyers (>5 purchases) subscribe karte hain?
 SELECT
     subscription_status,
     COUNT(*) AS repeat_buyers,
@@ -106,7 +106,7 @@ FROM customer
 WHERE previous_purchases > 5
 GROUP BY subscription_status;
 
--- Q10. Revenue contribution of each age group
+--  Revenue contribution of each age group
 SELECT
     age,
     SUM([purchase_amount_(usd)]) AS total_revenue
