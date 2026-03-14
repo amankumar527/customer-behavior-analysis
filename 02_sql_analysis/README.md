@@ -1,13 +1,13 @@
 # 🗄️ SQL Business Analysis — Customer Shopping Behavior
 
-## Database: PostgreSQL / SSMS
+## Database:  SSMS
 ## Table: `customer`
 
 ---
 
 ## How to Run
 
-1. Open **SSMS** or **pgAdmin**
+1. Open **SSMS**
 2. Connect to your database
 3. Open `business_queries.sql`
 4. Run all queries (or one by one)
