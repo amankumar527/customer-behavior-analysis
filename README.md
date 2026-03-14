@@ -192,11 +192,6 @@ jupyter notebook 01_python_eda/customer_eda.ipynb
 ## 👤 Author
 
 **Aman Kumar**
-- 💼 [LinkedIn](https://linkedin.com/in/amankumar527)
-- 🐙 [GitHub](https://github.com/amankumar527)
 
----
 
-## 📄 License
 
-This project uses publicly available retail transaction data for educational purposes only.
